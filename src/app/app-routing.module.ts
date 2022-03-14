@@ -9,7 +9,13 @@ const routes: Routes = [
   {
     path: 'planets',
     loadChildren: () => import('./planets/module/planets.module').then(m => m.PlanetsModule)
-  }
+  },
+  {
+    path: '**',
+    pathMatch: 'full',
+    loadChildren: () => import('./work-in-progress/work-in-progress.module').then(m => m.WorkInProgressModule)
+  },
+
 ];
 
 @NgModule({

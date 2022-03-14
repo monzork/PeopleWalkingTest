@@ -8,19 +8,14 @@ import { SharedFacade } from './facade/sharedFacade';
 })
 export class AppComponent implements OnInit {
   title = 'PeopleWalkingTest';
+  headersList: string[] = [];
 
   constructor(private sharedFacade: SharedFacade) { }
 
   ngOnInit(): void {
     this.sharedFacade.getListAPIInfo().subscribe(result => {
       this.sharedFacade.setAPIInfo(result);
-      console.log(result);
-
-      this.sharedFacade.getListAPIInfo().subscribe(result => {
-        console.log(result);
-      });
+      this.headersList = Object.keys(result);
     });
-
-
   }
 }

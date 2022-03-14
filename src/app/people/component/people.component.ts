@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PeopleFacade } from '../facade/peopleFacade';
 import { PeopleService } from '../service/people.service';
 
 @Component({
@@ -8,11 +9,12 @@ import { PeopleService } from '../service/people.service';
 })
 export class PeopleComponent implements OnInit {
 
-  constructor(private peopleService: PeopleService) { }
+  constructor(private peopleFacade: PeopleFacade) { }
 
   ngOnInit(): void {
 
-    this.peopleService.getPeople().subscribe(results => {
+    this.peopleFacade.getPeopleList().subscribe(results => {
+      this.peopleFacade.setPeopleINfo(results);
       console.log(results);
     });
 
