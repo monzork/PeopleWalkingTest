@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: () => import('./planets/module/planets.module').then(m => m.PlanetsModule)
   },
   {
+    path: 'starships',
+    loadChildren: () => import('./starships/module/starships.module').then(m => m.StarshipsModule)
+  },
+  {
     path: '**',
     pathMatch: 'full',
     loadChildren: () => import('./work-in-progress/work-in-progress.module').then(m => m.WorkInProgressModule)
