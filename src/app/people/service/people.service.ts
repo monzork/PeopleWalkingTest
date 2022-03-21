@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { forkJoin, Observable } from 'rxjs';
-import { concatAll, concatMap, flatMap, map, mergeMap, switchMap, tap, toArray } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { concatAll, map, mergeMap, toArray } from 'rxjs/operators';
 import { IPeople, IPeopleResult, IPlanet } from '../interface/ipeople';
 
 @Injectable({

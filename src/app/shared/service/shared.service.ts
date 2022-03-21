@@ -11,6 +11,6 @@ export class SharedService {
   constructor(private http: HttpClient) { }
 
   public getInfoApi(): Observable<IAPI> {
-    return this.http.get<IAPI>('../../assets/api.json');
+    return this.http.get<IAPI>('https://swapi.dev/api/');
   }
 }
