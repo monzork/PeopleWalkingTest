@@ -11,7 +11,7 @@ export class StartShipsFacade {
 
   constructor(private starshipService: StarshipService) { }
 
-  private starshipsList: any[] = [];
+  private starshipsList: IStarship[] = [];
 
   public setStarshipInfo(starshipInfo: IStarship[]): void {
     if (!starshipInfo.length) {

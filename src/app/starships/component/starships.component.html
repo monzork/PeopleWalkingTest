@@ -1,1 +1,11 @@
-
+<section *ngFor="let starship of starshipsList | appFilter: searchText">
+  <dl>
+    <dt>
+      {{starship.name}}
+    </dt>
+    <dd>
+      StarshipName: {{starship.starshipName}} | Passengers: {{starship.passengers}}
+    </dd>
+  </dl>
+  <hr>
+</section>

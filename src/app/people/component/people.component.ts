@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { PeopleFacade } from '../facade/peopleFacade';
 import { IPeopleResult } from '../interface/ipeople';
 
@@ -9,9 +10,14 @@ import { IPeopleResult } from '../interface/ipeople';
 })
 export class PeopleComponent implements OnInit {
 
-  constructor(private peopleFacade: PeopleFacade) { }
+  constructor(private peopleFacade: PeopleFacade, private store: Store<{ search: string }>) {
+    this.store.select('search').subscribe(e => {
+      this.searchText = e;
+    });
+  }
 
-  peopleGroupByHomeWorld: { [key: string]: IPeopleResult[] } = {}
+  peopleGroupByHomeWorld: { [key: string]: IPeopleResult[] } = {};
+  searchText: string = '';
 
   ngOnInit(): void {
 
@@ -21,22 +27,19 @@ export class PeopleComponent implements OnInit {
     });
   }
 
-  private groupByHomeWorld(peopleList: IPeopleResult[]): any {
+  private groupByHomeWorld(peopleList: IPeopleResult[]): { [key: string]: IPeopleResult[] } {
     const peopleMap: { [key: string]: IPeopleResult[] } = {};
     peopleList.forEach(p => ((peopleMap[p.homeworldName]) = (peopleMap[p.homeworldName] || [])).push(p));
     return peopleMap;
   }
 
-
   public getHeightValue(height: number): string {
-    let heightValue = ''
     if (height > 200) {
-      heightValue = 'high';
-    } else if (height > 100 && height < 200) {
-      heightValue = 'normal';
-    } else {
-      heightValue = 'low';
+      return 'high';
     }
-    return heightValue;
+    if (height > 100 && height < 200) {
+      return 'normal';
+    }
+    return 'low';
   }
 }

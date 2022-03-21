@@ -1,15 +1,10 @@
-<script src="https://use.fontawesome.com/d3c5d1f237.js"></script>
-
 <div class="topnav">
-  <a>Search 1</a>
-  <a>Search 2</a>
-  <a>Search 3</a>
-  <a>Search 4</a>
+  <a *ngFor="let s of lastSearch" [routerLink]="" (click)="searchFilter(s)">
+    {{ s }}
+  </a>
   <div class="search-container">
-    <form>
-      <input type="text" placeholder="Search.." name="search">
-      <button><i class="fa fa-search"></i></button>
-    </form>
+    <input [(ngModel)]="search" type="text" placeholder="Search.." name="search">
+    <button (click)="addSearch()"><i class="fa fa-search"></i></button>
   </div>
 </div>
 <app-navbar [headersList]="headersList"></app-navbar>

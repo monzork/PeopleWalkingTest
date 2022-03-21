@@ -1,10 +1,9 @@
 <ul style="list-style: none;">
-  <li *ngFor="let homeWorldPeople of peopleGroupByHomeWorld | keyvalue">
+  <li *ngFor="let homeWorldPeople of peopleGroupByHomeWorld | keyvalue | appFilter: searchText">
     <h3>{{ homeWorldPeople.key }}</h3>
     <ul>
-      <li *ngFor="let person of homeWorldPeople.value">
+      <li *ngFor="let person of homeWorldPeople.value ">
         <h4 style="display:inline-block;">{{person.name}}</h4> heigth: <span>{{getHeightValue(person.height)}}</span>
-
       </li>
     </ul>
   </li>
